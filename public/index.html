@@ -1,17 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <title>Front Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Front Page</title>
 
-    <style>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    
-    </style>
+    body {
+      background-color:#181818;
+    }
+
+    .menu {
+      float:top;
+      width:100%;
+      text-align:center;
+      background-color:#818181;
+      color:#ffffff;
+      padding:15px;
+    }
+  
+    .lists {
+      float:top;
+      width:100%;
+      background-color:#794b4b;
+      padding-top:15px;
+    }
+
+    .list {
+      float:left;
+      width:25%;
+      height:10%;
+      text-align:left;
+      background-color:#818181;
+      color:#ffffff;
+      padding:25px;
+      border-style:solid;
+      border-width:thin;
+      border-color:rgb(255, 115, 0);
+
+    }
+
+    .list-item {
+      float:left;
+      width:100%;
+      text-align:left;
+      color:#972b2b;
+    }
+
+    @media only screen and (max-width:620px) {
+      /* For mobile phones: */
+      .list {
+        width:50%;
+      }
+    }
+  </style>
 </head>
 <body>
 
+<div class="page">
+
+<div class="menu">
+<h1>Menu at top</h1>
+</div>
+
+<div class="lists">
+
+  <div class="list">
+    <p class="list-item">to-do test</p>
+  </div>
+
+  <div class="list">
+    <p class="list-item">in progress test</p>
+  </div>
+
+  <div class="list">
+    <p class="list-item">done test</p>
+  </div>
+
+  <div class="list">
+    <p class="list-item">add test</p>
+  </div>
+
+  <div class="list">
+      <p class="list-item">add test</p>
+    </div>
+</div>
+
+</div>
 </body>
 
 <script>
