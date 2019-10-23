@@ -10,243 +10,90 @@
       box-sizing: border-box;
     }
 
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    .active, .share {
-      float: left;
-    }
-
-    li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    li a:hover {
-      background-color: #111;
-    }
-
-    .logout{
-      float:right;
-    }
-
     body {
-      background-color:#2b2b2b;
+      background-color:#181818;
     }
 
     .menu {
       float:top;
       width:100%;
       text-align:center;
-      background-color:#436277;
+      background-color:#818181;
       color:#ffffff;
+      padding:15px;
     }
   
     .lists {
+      float:top;
+      width:100%;
+      background-color:#794b4b;
       padding-top:15px;
     }
 
     .list {
-      position:relative;
       float:left;
-      width:calc(25% - 10px);
+      width:25%;
       height:10%;
       text-align:left;
-      background-color:#436277;
+      background-color:#818181;
       color:#ffffff;
-      padding-left: 20px;
-      padding-right:20px;
-      margin:5px;
-      border-radius: 5px;
-      background:#436277;
-      
-    }
+      padding:25px;
+      border-style:solid;
+      border-width:thin;
+      border-color:rgb(255, 115, 0);
 
-    .list-button {
-      background-color:transparent;
-      color: white;
-      position:absolute; 
-      font-size:25px;
-      top: 0; 
-      right: 0; 
-      margin-top:10px;
-      margin-right:25px;
-      border: none;
-      cursor: pointer;
-    }
-
-    /*hide the inputs/checkmarks*/
-    .fake-input {
-      display: none;
-    }
-
-    /*hide the submenu*/
-    ul.submenu {
-      max-height: 0;
-      overflow: hidden;
-      position:absolute;
-      right:0;
-      top:0;
-      margin-top: 40px;
-    }
-
-    /*show the submenu when checked*/
-    .fake-input:checked~ul.submenu {
-      max-height: 300px;
-    }
-
-    .list-title {
-      font-size:20px;
     }
 
     .list-item {
-      float:top;
-      text-align:left;
-      color:#ffffff;
-      border-radius: 5px;
-      background:#214761;
-      padding:5px;
-      cursor: pointer;
-    }
-
-    .new-list-item{
-      float:top;
-      width: 100%;
-      text-align:left;
-      color:#ffffff;
-      border-radius: 5px;
-      border-style:none;
-      background:#2b2b2b;
-      padding:5px;
-      margin-bottom:20px;
-      cursor: pointer;
-    }
-
-    .new-task-input{
-      width:100%;
-      float:top;
-      background:#2b2b2b;
-      border-radius: 5px;
-      border-style:none;
-      color:#ffffff;
-      padding:5px;
-
-    }
-
-    .delete{
-      background-color:#a10000;
-    }
-    .delete:hover{
-      background-color:#720000;
-    }
-
-    .submit{
-      width:30%;
       float:left;
-      background:#7e7e7e;
-      border-radius: 5px;
-      border-style:none;
-      color:#ffffff;
-      padding:5px;
-      margin:10px 10px 20px 0px;
-      cursor: pointer;
-
-    }
-
-    #form1{
-      display: none;
-    }
-
-    #formButton {
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
+      width:100%;
+      text-align:left;
+      color:#972b2b;
     }
 
     @media only screen and (max-width:620px) {
       /* For mobile phones: */
       .list {
-        width:calc(50% - 10px);
+        width:50%;
       }
     }
   </style>
 </head>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-</script>
 <body>
 
 <div class="page">
 
 <div class="menu">
-  <ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a class="share" href="#share">Share</a></li>
-    <li><a class="logout" href="#logout">Logout</a></li>
-  </ul>
+<h1>Menu at top</h1>
 </div>
 
 <div class="lists">
 
   <div class="list">
-    <p class="list-title">To do</p>
-
-    <input class="fake-input" id="list-button" type="checkbox" name="list-button" />
-    <label class="list-button" for="list-button">...</label>
-    <ul class="submenu">
-      <li><a class="delete" href="#">Delete</a></li>
-    </ul>
-
-    <button id="formButton" class="new-list-item">+ Add task</button>
-    <form id="form1">
-      <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
-      <input class="submit" type="submit" value="Add">
-      <input class="submit" id="cancleButton" type="submit" value="Cancle">
-      </form> 
-    </div>
-
-  <div class="list">
-    <p class="list-title">In progress</p> 
-    <p class="list-item">In progress test</p>
+    <p class="list-item">to-do test</p>
   </div>
 
   <div class="list">
-    <p class="list-title">Done</p>
+    <p class="list-item">in progress test</p>
+  </div>
+
+  <div class="list">
     <p class="list-item">done test</p>
   </div>
 
-  <div class="list" style="background:#7e7e7e">
-    <p class="list-title">+Add list</p>
+  <div class="list">
+    <p class="list-item">add test</p>
   </div>
 
-
-
+  <div class="list">
+      <p class="list-item">add test</p>
+    </div>
 </div>
 
 </div>
 </body>
 
 <script>
-$(document).ready(function() {
-  $("#formButton").click(function() {
-    $("#form1").toggle();
-    $("#formButton").css('display','none');
-  });
-
-  $("#cancleButton").click(function() {
-    $("#form1").toggle();
-    $("#formButton").css('display','block');
-  });
-});
 
 </script>
 
