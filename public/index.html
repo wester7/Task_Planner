@@ -66,7 +66,6 @@
       padding-right:20px;
       margin:5px;
       border-radius: 5px;
-      background:#436277;
       
     }
 
@@ -88,9 +87,9 @@
       display: none;
     }
 
-    /*hide the submenu*/
-    ul.submenu {
-      max-height: 0;
+    /*hide the listmenu*/
+    ul.listmenu {
+      max-height: 0px;
       overflow: hidden;
       position:absolute;
       right:0;
@@ -98,13 +97,15 @@
       margin-top: 40px;
     }
 
-    /*show the submenu when checked*/
-    .fake-input:checked~ul.submenu {
+    /*show the listmenu when checked*/
+    .fake-input:checked~ul.listmenu {
       max-height: 300px;
     }
 
     .list-title {
       font-size:20px;
+      cursor: pointer;
+
     }
 
     .list-item {
@@ -202,7 +203,7 @@
 
     <input class="fake-input" id="list-button" type="checkbox" name="list-button" />
     <label class="list-button" for="list-button">...</label>
-    <ul class="submenu">
+    <ul class="listmenu">
       <li><a class="delete" href="#">Delete</a></li>
     </ul>
 
@@ -225,7 +226,8 @@
   </div>
 
   <div class="list" style="background:#7e7e7e">
-    <p class="list-title">+Add list</p>
+    <p class="list-title">+ Add list</p>
+    
   </div>
 
 
@@ -236,6 +238,13 @@
 </body>
 
 <script>
+
+  $(document).on("click", function(event){
+    if ($('.fake-input').prop('checked') ==true) {
+      $('.fake-input').prop('checked', false);
+    };
+  });
+
 $(document).ready(function() {
   $("#formButton").click(function() {
     $("#form1").toggle();

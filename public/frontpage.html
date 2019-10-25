@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Front Page</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color:#2b2b2b;
+    }
+
+    input{
+      width:100%;
+      background:#2b2b2b;
+      border-radius: 5px;
+      border-style:none;
+      color:#ffffff;
+      padding:5px;    
+    }
+
+    .login-page{
+      width: 100%;
+    }
+
+    .login{
+      width:30%;
+      height:100%;
+      margin:auto;
+      margin-top:20%;
+      background-color:#436277;
+      color:#ffffff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .submit{
+      width:30%;
+      float:left;
+      background:#7e7e7e;
+      border-radius: 5px;
+      border-style:none;
+      color:#ffffff;
+      padding:5px;
+      margin:10px 10px 20px 0px;
+      cursor: pointer;
+    }
+
+      @media only screen and (max-width:620px) {
+      /* For mobile phones: */
+      .login {
+        width:calc(50% - 10px);
+      }
+    }
+  </style>
+
+
+</head>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+</script>
+
+
+<body>
+
+  <div class="login-page">
+
+    <div class="login">
+      <labal>Username:</labal>
+      <input class="username" type="text" name="username" placeholder="Write name..." autocomplete="off" value=""><br>
+      <labal>Password:</labal>
+      <input class="password" type="text" name="username" placeholder="Write name..." autocomplete="off" value=""><br>
+      <input class="submit" type="submit" value="Login">
+      <input class="submit" type="submit" value="Register">
+
+    </div>
+
+    <div class="register">
+
+    </div>
+
+  </div>
+
+</body>
+
+<script>
+
+</script>
+
+</html>
