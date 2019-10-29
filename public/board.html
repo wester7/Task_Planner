@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Front Page</title>
+  <link rel="stylesheet" href="static/board.css">
+  
+</head>
+</script>
+<body>
+
+<div class="page">
+
+<div class="menu">
+  <ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a class="share" href="#share">Share</a></li>
+    <li><a class="logout" href="#logout">Logout</a></li>
+  </ul>
+</div>
+
+<div class="lists">
+
+  <div class="list">
+    <p class="list-title">To do</p>
+
+    
+    <label class="list-button" for="list-button">...<input class="fake-input" id="list-button" type="checkbox" name="list-button" /><ul class="listmenu">
+        <li><a class="delete" href="#">Delete</a></li>
+      </ul></label>
+
+    <button id="formButton" class="new-list-item">+ Add task</button>
+    <form id="form1">
+      <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
+      <input class="submit" type="submit" value="Add">
+      <input class="submit" id="cancelButton" type="submit" value="Cancle">
+      </form> 
+    </div>
+
+  <div class="list">
+    <p class="list-title">In progress</p> 
+    <p class="list-item">In progress test</p>
+  </div>
+
+  <div class="list">
+    <p class="list-title">Done</p>
+    <p class="list-item">done test</p>
+  </div>
+
+  <div class="list" style="background:#7e7e7e">
+    <p class="list-title">+ Add list</p>
+    
+  </div>
+
+
+
+</div>
+
+</div>
+</body>
+
+<script>
+listButton = document.getElementById("list-button");
+formButton = document.getElementById("formButton");
+form1 = document.getElementById("form1");
+cancelButton = document.getElementById("cancelButton");
+
+  document.addEventListener("click", function(){
+    if (event.target != listButton && listButton.checked == true){
+      document.getElementById("list-button").checked = false;
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function(){
+    document.addEventListener("click", function(){
+      if(event.target == formButton){
+        form1.style.display = "block";
+        formButton.style.display = "none";
+      }
+      if (event.target == cancelButton){
+        form1.style.display = "none";
+        formButton.style.display = "block";
+      }
+    });
+  });
+
+</script>
+
+</html>
