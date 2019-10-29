@@ -10,147 +10,58 @@
       box-sizing: border-box;
     }
 
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    .active, .share {
-      float: left;
-    }
-
-    li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    li a:hover {
-      background-color: #111;
-    }
-
-    .logout{
-      float:right;
-    }
-
     body {
       background-color:#2b2b2b;
     }
 
-    .menu {
-      float:top;
+    input{
       width:100%;
+      background:#2b2b2b;
+      border-radius: 5px;
+      border-style:none;
+      color:#ffffff;
+      padding:5px;
+      margin-top:5px;
+      margin-bottom:10px;    
+    }
+
+    h1{
+      color:white;
       text-align:center;
-      background-color:#436277;
-      color:#ffffff;
-    }
-  
-    .lists {
-      padding-top:15px;
     }
 
-    .list {
-      position:relative;
-      float:left;
-      width:calc(25% - 10px);
-      height:10%;
-      text-align:left;
-      background-color:#436277;
-      color:#ffffff;
-      padding-left: 20px;
-      padding-right:20px;
-      margin:5px;
-      border-radius: 5px;
-      
-    }
-
-    .list-button {
-      background-color:transparent;
-      color: white;
-      position:absolute; 
-      font-size:25px;
-      top: 0; 
-      right: 0; 
-      margin-top:10px;
-      margin-right:25px;
-      border: none;
-      cursor: pointer;
-    }
-
-    /*hide the inputs/checkmarks*/
-    .fake-input {
-      display: none;
-    }
-
-    /*hide the listmenu*/
-    ul.listmenu {
-      max-height: 0px;
-      overflow: hidden;
-      position:absolute;
-      right:0;
-      top:0;
-      margin-top: 40px;
-    }
-
-    /*show the listmenu when checked*/
-    .fake-input:checked~ul.listmenu {
-      max-height: 300px;
-    }
-
-    .list-title {
-      font-size:20px;
-      cursor: pointer;
-
-    }
-
-    .list-item {
-      float:top;
-      text-align:left;
-      color:#ffffff;
-      border-radius: 5px;
-      background:#214761;
-      padding:5px;
-      cursor: pointer;
-    }
-
-    .new-list-item{
-      float:top;
+    .login-page{
       width: 100%;
-      text-align:left;
+      margin-top:50px;
+    }
+
+    .login{
+      width:30%;
+      height:100%;
+      margin:auto;
+      background-color:#436277;
       color:#ffffff;
+      padding: 20px;
+      padding-bottom:55px;
       border-radius: 5px;
-      border-style:none;
-      background:#2b2b2b;
-      padding:5px;
-      margin-bottom:20px;
-      cursor: pointer;
+      display:block;
     }
 
-    .new-task-input{
-      width:100%;
-      float:top;
-      background:#2b2b2b;
-      border-radius: 5px;
-      border-style:none;
+    .register{
+      width:30%;
+      height:100%;
+      margin:auto;
+      background-color:#436277;
       color:#ffffff;
-      padding:5px;
-
-    }
-
-    .delete{
-      background-color:#a10000;
-    }
-    .delete:hover{
-      background-color:#720000;
+      padding: 20px;
+      padding-bottom:55px;
+      border-radius: 5px;
+      display:none;
     }
 
     .submit{
       width:30%;
+      min-width: 60px; 
       float:left;
       background:#7e7e7e;
       border-radius: 5px;
@@ -159,104 +70,95 @@
       padding:5px;
       margin:10px 10px 20px 0px;
       cursor: pointer;
-
     }
 
-    #form1{
-      display: none;
-    }
-
-    #formButton {
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    @media only screen and (max-width:620px) {
+      @media only screen and (max-width:620px) {
       /* For mobile phones: */
-      .list {
+      .login {
         width:calc(50% - 10px);
       }
     }
   </style>
+
+
 </head>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
 </script>
+
+
 <body>
 
-<div class="page">
+  <div class="login-page">
 
-<div class="menu">
-  <ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a class="share" href="#share">Share</a></li>
-    <li><a class="logout" href="#logout">Logout</a></li>
-  </ul>
-</div>
+    <h1>Welcome</h1>
+  
+    <form class="login">
+      <labal>Username:</labal>
+      <input class="username" type="text" name="username" placeholder="Name..." autocomplete="off" value="" required><br>
+      <labal>Password:</labal>
+      <input class="password" type="password" name="password" placeholder="Password..." autocomplete="off" value="" required><br>
+      <input class="submit" type="submit" value="Login">
+      <input id="register" class="submit" type="button" value="Register">
 
-<div class="lists">
+    </form>
 
-  <div class="list">
-    <p class="list-title">To do</p>
 
-    <input class="fake-input" id="list-button" type="checkbox" name="list-button" />
-    <label class="list-button" for="list-button">...</label>
-    <ul class="listmenu">
-      <li><a class="delete" href="#">Delete</a></li>
-    </ul>
 
-    <button id="formButton" class="new-list-item">+ Add task</button>
-    <form id="form1">
-      <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
-      <input class="submit" type="submit" value="Add">
-      <input class="submit" id="cancleButton" type="submit" value="Cancle">
-      </form> 
-    </div>
+    <form class="register">
 
-  <div class="list">
-    <p class="list-title">In progress</p> 
-    <p class="list-item">In progress test</p>
+      <labal>Email:</labal>
+      <input class="email" type="email" name="email" placeholder="Email..." autocomplete="off" value="" required><br>
+
+      <labal>Username:</labal>
+      <input class="username" type="text" name="username" placeholder="name..." autocomplete="off" value="" required><br>
+
+      <labal>Password:</labal>
+      <input id="password" class="password" type="password" name="password" placeholder="Password..." autocomplete="off" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+
+      <labal>Confirm password:</labal>
+      <input id="confirm-password" class="confirm-password" type="password" name="confirm-password" placeholder="Password..." autocomplete="off" value="" 
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+
+      <input class="submit" type="submit" value="Create user">
+      <input id="login" class="submit" type="button" value="Login">
+
+    </form>
+
   </div>
 
-  <div class="list">
-    <p class="list-title">Done</p>
-    <p class="list-item">done test</p>
-  </div>
-
-  <div class="list" style="background:#7e7e7e">
-    <p class="list-title">+ Add list</p>
-    
-  </div>
-
-
-
-</div>
-
-</div>
 </body>
 
 <script>
-
-  $(document).on("click", function(event){
-    if ($('.fake-input').prop('checked') ==true) {
-      $('.fake-input').prop('checked', false);
-    };
-  });
-
 $(document).ready(function() {
-  $("#formButton").click(function() {
-    $("#form1").toggle();
-    $("#formButton").css('display','none');
+  $("#register").click(function() {
+    $(".register").css("display", "block");
+    $(".login").css("display", "none");
   });
 
-  $("#cancleButton").click(function() {
-    $("#form1").toggle();
-    $("#formButton").css('display','block');
+  $("#login").click(function() {
+    $(".register").css("display", "none");
+    $(".login").css("display", "block");
   });
+
 });
 
+let password = document.getElementById("password")
+let confirm_password = document.getElementById("confirm-password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
 </script>
 
 </html>
