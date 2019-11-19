@@ -1,106 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Front Page</title>
   <link rel="stylesheet" href="static/board.css">
-  
+
 </head>
+<style>
+  body {
+    background-image: url('bakgrunnsbilde2.jpg');
+    background-color: #fff9f9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 565px;
+
+  }
+</style>
 </script>
+
 <body>
 
-<div class="page">
+  <div class="page">
 
-<div class="menu">
-  <ul>
-    <li><a class="active" href="board.html">Home</a></li>
-    <li><a class="share" href="shared_lists.html">Shared Lists</a></li>
-    <li><a id="logout" class="logout">Logout</a></li>
-  </ul>
-</div>
+    <div class="menu">
+      <ul>
+        <li><a class="active" href="board.html">Home</a></li>
+        <li><a class="share" href="shared_lists.html">Shared Lists</a></li>
+        <li><a id="logout" class="logout">Logout</a></li>
+      </ul>
+    </div>
 
-<div id="lists" class="lists">
+    <div id="lists" class="lists">
 
-    <!-- Add New List -->
-    <div class="list">
-        <!-- Add list -->
-        <button id="form_show_btn_add_list" class="new-list-item">+ Add List</button>
-        <form id="form_add_list">
-            <h2 id="txtResult_add_list"></h2>
-            <input id="name_add_list" class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
-            <input id="form_add_btn_add_list" type="button"  value="Add">
-            <input id="form_cancel_btn_add_list" type="button" value="Cancel">
+      <!-- To-Do List -->
+      <div class="list">
+        <p class="list-title">To do</p>
+
+        <!-- List Dropdown Menu -->
+        <label class="list-button" for="list-button">...<input class="fake-input" id="list-button" type="checkbox"
+            name="list-button" />
+          <ul class="listmenu">
+            <li><a class="delete" href="#">Delete</a></li>
+            <li><a class="makePublic" href="#">Make Public</a></li>
+          </ul>
+        </label>
+
+        <!-- Add task to list -->
+        <button id="formButton" class="new-list-item">+ Add task</button>
+        <form id="form1">
+          <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off"
+            value=""><br>
+          <input class="submit" value="Add">
+          <input class="submit" id="cancelButton" value="Cancel">
         </form>
       </div>
+        </div>
+        <!-- Add New List -->
+        <div class="newList">
+          <!-- Add list -->
+          <button id="form_show_btn_add_list" class="new-list">+ Add List</button>
+          <form id="form_add_list">
+            <h2 id="txtResult_add_list"></h2>
+            <input id="name_add_list" class="new-list-input" type="text" name="FirstName" placeholder="Write name..."
+              autocomplete="off" value=""><br>
+            <input id="form_add_btn_add_list" type="button" value="Add">
+            <input id="form_cancel_btn_add_list" type="button" value="Cancel">
+          </form>
+        </div>
+    </div>
 
-  <!-- To-Do List -->
-  <div class="list">
-    <p class="list-title">To do</p>
-
-    <!-- List Dropdown Menu -->
-    <label class="list-button" for="list-button">...<input class="fake-input" id="list-button" type="checkbox" name="list-button" /><ul class="listmenu">
-        <li><a class="delete" href="#">Delete</a></li>
-        <li><a class="makePublic" href="#">Make Public</a></li>
-    </ul></label>
-
-    <!-- Add task to list -->
-    <button id="formButton" class="new-list-item">+ Add task</button>
-    <form id="form1">
-      <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
-      <input class="submit" value="Add">
-      <input class="submit" id="cancelButton"  value="Cancle">
-    </form> 
   </div>
-
-  <!-- In Progress List -->
-  <div class="list">
-    <p class="list-title">In progress</p> 
-    <p class="list-item">In progress test</p>
-  </div>
-
-    <!-- Done List -->
-  <div class="list">
-    <p class="list-title">Done</p>
-    <p class="list-item">done test</p>
-  </div>
-
-
-
-
-
-</div>
-
-</div>
 </body>
 
 
 <script src="js/logout.js"></script>
 <script src="js/board.js"></script>
 <script>
-listButton = document.getElementById("list-button");
-formButton = document.getElementById("formButton");
-form1 = document.getElementById("form1");
-cancelButton = document.getElementById("cancelButton");
 
-  document.addEventListener("click", function(){
-    if (event.target != listButton && listButton.checked == true){
+  listButton = document.getElementById("list-button");
+  formButton = document.getElementById("formButton");
+  form1 = document.getElementById("form1");
+  cancelButton = document.getElementById("cancelButton");
+
+  document.addEventListener("click", function () {
+    if (event.target != listButton && listButton.checked == true) {
       document.getElementById("list-button").checked = false;
     }
   });
 
-  document.addEventListener("DOMContentLoaded", function(){
-    document.addEventListener("click", function(){
-      if(event.target == formButton){
+  document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("click", function () {
+      if (event.target == formButton) {
         form1.style.display = "block";
         formButton.style.display = "none";
       }
-      if (event.target == cancelButton){
+      if (event.target == cancelButton) {
         form1.style.display = "none";
         formButton.style.display = "block";
       }
     });
   });
+
 
 </script>
 

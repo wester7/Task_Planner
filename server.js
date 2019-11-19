@@ -57,7 +57,7 @@ app.post('/list', async function (req, res) {
       
       
       if (result.rows.length > 0) {
-         res.status(200).json({ msg: "Insert OK" }); //send reponse
+         res.status(200).json({ msg: "" }); //send reponse
       }
       else {
          res.status(500).json({ msg: "Insert Fail" });
@@ -123,7 +123,7 @@ app.post('/users', async function (req, res) {
       let result = await pool.query(sql, values);
 
       if (result.rows.length > 0) {
-         res.status(200).json({ msg: "Insert OK" }); //send response
+         res.status(200).json({ msg: "Account created" }); //send response
       }
       else {
          res.status(500).json({ msg: "Insert Fail" });

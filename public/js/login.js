@@ -62,8 +62,8 @@ async function register_users(evt) {
     }
     catch (err) {
         // Find the error reason
-        errorReason = "Can not insert user";
-        txtResult_register.innerHTML = "Error: " + errorReason;
+        errorReason = "Invalid input, check requirements.";
+        txtResult_register.innerHTML = errorReason;
 
         console.log(err);
     }
@@ -102,6 +102,8 @@ async function login_user(evt) {
         window.location.href = "board.html?"+ data.userid;
     }
     catch (err) {
+        errorReason = "Invalid Login.";
+        txtResult_login.innerHTML = errorReason;
         console.log(err);
     }
 }

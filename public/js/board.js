@@ -114,7 +114,7 @@ async function add_list(evt) {
     let urlList = url + "/list"
 
     //Get stored user data
-    let logindata = JSON.parse(sessionStorage.getItem("list"));
+    let logindata = JSON.parse(sessionStorage.getItem("user"));
     
     let token = logindata.token;
 
