@@ -14,44 +14,58 @@
 
 <div class="menu">
   <ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a class="share" href="#share">Share</a></li>
-    <li><a class="logout" href="#logout">Logout</a></li>
+    <li><a class="active" href="board.html">Home</a></li>
+    <li><a class="share" href="shared_lists.html">Shared Lists</a></li>
+    <li><a id="logout" class="logout">Logout</a></li>
   </ul>
 </div>
 
-<div class="lists">
+<div id="lists" class="lists">
 
+    <!-- Add New List -->
+    <div class="list">
+        <!-- Add list -->
+        <button id="form_show_btn_add_list" class="new-list-item">+ Add List</button>
+        <form id="form_add_list">
+            <h2 id="txtResult_add_list"></h2>
+            <input id="name_add_list" class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
+            <input id="form_add_btn_add_list" type="button"  value="Add">
+            <input id="form_cancel_btn_add_list" type="button" value="Cancel">
+        </form>
+      </div>
+
+  <!-- To-Do List -->
   <div class="list">
     <p class="list-title">To do</p>
 
-    
+    <!-- List Dropdown Menu -->
     <label class="list-button" for="list-button">...<input class="fake-input" id="list-button" type="checkbox" name="list-button" /><ul class="listmenu">
         <li><a class="delete" href="#">Delete</a></li>
-      </ul></label>
+        <li><a class="makePublic" href="#">Make Public</a></li>
+    </ul></label>
 
+    <!-- Add task to list -->
     <button id="formButton" class="new-list-item">+ Add task</button>
     <form id="form1">
       <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
-      <input class="submit" type="submit" value="Add">
-      <input class="submit" id="cancelButton" type="submit" value="Cancle">
-      </form> 
-    </div>
+      <input class="submit" value="Add">
+      <input class="submit" id="cancelButton"  value="Cancle">
+    </form> 
+  </div>
 
+  <!-- In Progress List -->
   <div class="list">
     <p class="list-title">In progress</p> 
     <p class="list-item">In progress test</p>
   </div>
 
+    <!-- Done List -->
   <div class="list">
     <p class="list-title">Done</p>
     <p class="list-item">done test</p>
   </div>
 
-  <div class="list" style="background:#7e7e7e">
-    <p class="list-title">+ Add list</p>
-    
-  </div>
+
 
 
 
@@ -60,6 +74,9 @@
 </div>
 </body>
 
+
+<script src="js/logout.js"></script>
+<script src="js/board.js"></script>
 <script>
 listButton = document.getElementById("list-button");
 formButton = document.getElementById("formButton");
