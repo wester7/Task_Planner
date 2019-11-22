@@ -256,6 +256,7 @@ input[id^="taskInput-"]{
 
 .input-result {
     background: none;
+    background-color: none;
     border:none;
     color: white;
     cursor:pointer;
