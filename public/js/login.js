@@ -1,5 +1,5 @@
 //Base url 
-let url = "http://localhost:4000";
+let url = "http://localhost:3000";
 
 window.onload = function () {
     //### Variables 
@@ -33,45 +33,47 @@ window.onload = function () {
 
 //Register user 
 async function register_users(evt) {
+        console.log("noe");
+        let urlUsers = url + "/users"
 
-    let urlUsers = url + "/users"
-
-    let updata = {
-        email: email_register.value,
-        password: password_register.value,
-        username: username_register.value,
-    }
-
-    let cfg = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updata)
-    }
-
-    try {
-        let resp = await fetch(urlUsers, cfg);
-        let data = await resp.json();
-
-        if (resp.status == 200) {
-            txtResult_register.innerHTML = data.msg;
-        }
-        else {
-            throw data;
+        let updata = {
+            email: email_register.value,
+            password: password_register.value,
+            username: username_register.value,
         }
 
-    }
-    catch (err) {
-        // Find the error reason
-        errorReason = "Invalid input, check requirements.";
-        txtResult_register.innerHTML = errorReason;
+        let cfg = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updata)
+        }
 
-        console.log(err);
-    }
+        try {
+            let resp = await fetch(urlUsers, cfg);
+            let data = await resp.json();
+
+            if (resp.status == 200) {
+                txtResult_register.innerHTML = data.msg;
+            }
+            else {
+                throw data;
+            }
+
+        }
+        catch (err) {
+            // Find the error reason
+            errorReason = "Invalid input, check requirements.";
+            txtResult_register.innerHTML = errorReason;
+
+            console.log(err);
+        }
 }
 
 //Login
 async function login_user(evt) {
-
+    if (password_login.value == "" && username_login.value == "") {
+        txtResult_login.innerHTML = "Please insert login information";
+    } else {
     let urlAuth = url + "/auth";
 
     let updata = {
@@ -99,11 +101,12 @@ async function login_user(evt) {
         sessionStorage.setItem("user", JSON.stringify(data));
 
         //Move to page when logged in.
-        window.location.href = "board.html?"+ data.userid;
+        window.location.href = "board.html?" + data.userid;
     }
     catch (err) {
         errorReason = "Invalid Login.";
         txtResult_login.innerHTML = errorReason;
         console.log(err);
     }
+}
 }

@@ -1,6 +1,6 @@
 //Server 
 const express = require('express');
-const port = process.env.PORT || 4000; // Port for server to run on. 
+const port = process.env.PORT || 3000; // Port for server to run on. 
 const app = express(); //server-app
 
 //Secrets, tokens, encryption
@@ -57,7 +57,7 @@ app.post('/list', async function (req, res) {
       
       
       if (result.rows.length > 0) {
-         res.status(200).json({ msg: "" }); //send reponse
+         res.status(200).json({ msg: "Insert OK" }); //send reponse
       }
       else {
          res.status(500).json({ msg: "Insert Fail" });
