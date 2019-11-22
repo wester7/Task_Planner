@@ -140,7 +140,6 @@ async function get_list() {
 
 
 
-
                 <div id="${newTaskID}" class="list-item">
 
                 <input id="${taskNameID}" class="input-result" value="A New Task Test"></input>
@@ -168,6 +167,17 @@ async function get_list() {
                 if (event.target != ddID && ddID.checked == true) {
                     document.getElementById(dropDownID).checked = false;
                 }
+
+                if (event.target != taskButton && taskButton.checked == true) {
+                    document.getElementById(taskButtonID).checked = false;
+                }
+
+                if (event.target != editName) {
+                    editName.style.color = "#384e6e";
+                    editName.style.background = "none";
+                    editName.blur();
+                }
+
             });
 
             let deleteList = document.getElementById(deleteID);
