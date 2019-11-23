@@ -1,13 +1,12 @@
-let logout;
+window.addEventListener("load", setupLogout);
 
-window.onload = function () {
+function setupLogout() {
 
-    logout = document.getElementById("logout");
-    logout.addEventListener('click', log_out);
-
+    let logoutDom = document.getElementById("logout");
+    logoutDom.addEventListener('click', logoutFunc);
 }
 
-function log_out(){
+function logoutFunc(){
 
     //Save user in cache
     sessionStorage.removeItem("user");

@@ -12,17 +12,16 @@
 </script>
 
 <body>
-
   <div class="menu">
     <ul>
       <li><a class="active" href="board.html">Home</a></li>
       <li><a class="share" href="shared_lists.html">Shared Lists</a></li>
-      <li><a id="logout" class="menuFloat" href="index.html">Logout</a></li>
+      <li><a id="logout" class="menuFloat">Logout</a></li>
       <li><a id="deleteUser" class="menuFloat">Delete User</a></li>
     </ul>
   </div>
 
-  <div id="deleteUserForm" class="deleteUserForm">
+  <div id="deleteUserForm" style="max-height: 0px;" class="deleteUserForm">
     <p id="check" style="color:white">Are you sure?</p>
     <input id="confirmDelete" class="confirm" type="button" value="Delete">
     <input id="cancelDelete" class="confirm" type="button" value="Cancel">

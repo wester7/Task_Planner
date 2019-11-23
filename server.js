@@ -27,11 +27,12 @@ app.use('/', express.static('public')); //for serving client files
 //Rest Api On server
 //Get - /list - Get lists
 app.get('/list', async function (req, res) {
-   // code here... 
-   let sql = "SELECT * FROM list";
+
+   let sql = "SELECT * FROM list WHERE userid = $1";
+   let values = [logindata.userid];
 
    try {
-       let result = await pool.query(sql);
+       let result = await pool.query(sql,values);
        res.status(200).json(result.rows); //send response 
    }
    catch(err) {
@@ -41,15 +42,54 @@ app.get('/list', async function (req, res) {
 
 });
 
+//Get - /list/shared - Get shared lists
+app.get('/list/shared', async function (req, res) {
+
+   let sql = "SELECT * FROM list WHERE public = $1";
+   let values = [true];
+
+   try {
+       let result = await pool.query(sql,values);
+       res.status(200).json(result.rows); //send response 
+   }
+   catch(err) {
+       res.status(500).json(err); //send response
+   }
+
+
+});
+
+//Get - /list - Get tasks
+app.get('/list/task', async function (req, res) {
+
+   
+   try {
+      let listid = req.query.listid;
+      console.log(listid);
+
+      let sql = "SELECT * FROM task WHERE listid = $1";
+      let values = [listid];
+
+
+      let result = await pool.query(sql,values);
+
+      res.status(200).json(result.rows); //send response 
+   }
+   catch(err) {
+       res.status(500).json(err); //send response
+   }
+
+
+});
 
 //Post - /list - Add list
 app.post('/list', async function (req, res) {
 
    let updata = req.body; //the data sent from the client
 
-   let sql = 'INSERT INTO list (id, name, userid) values(DEFAULT, $1, $2) RETURNING *';
+   let sql = 'INSERT INTO list (id, name, userid, public) values(DEFAULT, $1, $2, $3) RETURNING *';
 
-   let values = [updata.name, updata.userid];
+   let values = [updata.name, updata.userid, true];
 
    try {
       console.log(values);
@@ -72,6 +112,182 @@ app.post('/list', async function (req, res) {
 
 });
 
+//delete - /list- delete list
+app.delete('/list', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'DELETE FROM list WHERE id=$1';
+
+   let values = [updata.id];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      console.log(result);
+      if (result.rowCount > 0) {
+         res.status(200).json({ msg: "Delete OK" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Delete Fail" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
+});
+
+//Post - /list/task - Add task
+app.post('/list/task', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'INSERT INTO task (id, name, listid) values(DEFAULT, $1, $2) RETURNING *';
+
+   let values = [updata.name, updata.listid];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      
+      if (result.rows.length > 0) {
+         res.status(200).json({ msg: "Insert OK" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Insert Fail" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
+});
+
+//delete - /list/task - delete task
+app.delete('/list/task', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'DELETE FROM task WHERE id=$1';
+
+   let values = [updata.id];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      console.log(result);
+      if (result.rowCount > 0) {
+         res.status(200).json({ msg: "Delete OK" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Delete Fail" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
+});
+
+//Put - /list/public - set public 
+app.put('/list/public', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'UPDATE list SET public = $1 WHERE id = $2';
+
+   let values = [updata.public, updata.id];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      if (result.rowCount > 0) {
+         res.status(200).json({ msg: "Changed public state" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Failed to change public state" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
+});
+
+//Put - /list/public - set public 
+app.put('/list/name', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'UPDATE list SET name = $1 WHERE id = $2';
+
+   let values = [updata.name, updata.id];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      if (result.rowCount > 0) {
+         res.status(200).json({ msg: "Changed name" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Failed to change name" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
+});
+
+//Put - /list/public - set public 
+app.put('/list/task/name', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'UPDATE task SET name = $1 WHERE id = $2';
+
+   let values = [updata.name, updata.id];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      if (result.rowCount > 0) {
+         res.status(200).json({ msg: "Changed name" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Failed to change name" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
+});
 
 //Post - /auth - Authenticate the user
 app.post('/auth', async function (req, res) {
@@ -94,7 +310,10 @@ app.post('/auth', async function (req, res) {
          if (check == true) {
             let payload = { userid: result.rows[0].id };
             let tok = jwt.sign(payload, secret, { expiresIn: "12h" }); //create token
-            res.status(200).json({ email: result.rows[0].email, userid: result.rows[0].id, token: tok });
+
+            logindata = { email: result.rows[0].email, userid: result.rows[0].id, token: tok };
+
+            res.status(200).json(logindata);
          }
          else {
             res.status(400).json({ msg: "Wrong password" });
@@ -132,6 +351,37 @@ app.post('/users', async function (req, res) {
    catch (err) {
       res.status(500).json({ error: err }); //send error response
    }
+});
+
+
+//delete - /user - delete user
+app.delete('/user', async function (req, res) {
+
+   let updata = req.body; //the data sent from the client
+
+   let sql = 'DELETE FROM users WHERE id=$1';
+
+   let values = [updata.id];
+
+   try {
+      console.log(values);
+      let result = await pool.query(sql, values);
+      
+      console.log(result);
+      if (result.rowCount > 0) {
+         res.status(200).json({ msg: "Delete OK" }); //send reponse
+      }
+      else {
+         res.status(500).json({ msg: "Delete Fail" });
+      }
+
+   }
+   catch (err) {
+      res.status(500).json({ error: err }); //sned error response
+
+   }
+
+
 });
 
 //Get - Localhost - Get correct index page. 

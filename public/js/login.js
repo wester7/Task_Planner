@@ -1,7 +1,9 @@
 //Base url 
 let url = "http://localhost:3000";
 
-window.onload = function () {
+window.addEventListener("load", setupLogin);
+
+function setupLogin() {
     //### Variables 
 
     //Login 
@@ -101,7 +103,7 @@ async function login_user(evt) {
         sessionStorage.setItem("user", JSON.stringify(data));
 
         //Move to page when logged in.
-        window.location.href = "board.html?" + data.userid;
+        window.location.href = "board.html";
     }
     catch (err) {
         errorReason = "Invalid Login.";
