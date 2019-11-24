@@ -143,6 +143,7 @@ async function get_list() {
             let publicText = "";
             let textLabelMakePublic = "Make Public";
             let textLabelMakePrivate = "Make Private";
+            
             if (valueList.public) {
                 publicText = textLabelMakePrivate;
             }
@@ -220,18 +221,24 @@ async function get_list() {
             div.className = "list";
             div.innerHTML = html + htmlTask;
 
+            
+
             div_list.appendChild(div);
 
+            
             confirmDelete.addEventListener("click", function(){
                 //console.log(logindata.userid);
                 delete_user(logindata.userid)
             });
 
+            let editName = document.getElementById(editID);
             let ddID = document.getElementById(dropDownID);
             document.addEventListener("click", function () {
                 if (event.target != ddID && ddID.checked == true) {
                     document.getElementById(dropDownID).checked = false;
-                }
+                } if (event.target != editName) {
+                    editName.style.background = "none";
+                } 
             });
 
             let deleteList = document.getElementById(deleteID);
@@ -241,7 +248,6 @@ async function get_list() {
             })
 
 
-            let editName = document.getElementById(editID);
             editName.addEventListener("click", function () {
                 console.log(editName);
                 editName.style.color = "#747474";
@@ -253,6 +259,8 @@ async function get_list() {
                 console.log(makeTask);
                 taskForm.style.display = "block";
                 makeTask.style.display = "none";
+                taskInputName.select();
+
             })
 
             let taskForm = document.getElementById(formID);
@@ -276,6 +284,7 @@ async function get_list() {
                 console.log("Cancel task making");
                 taskForm.style.display = "none";
                 makeTask.style.display = "block";
+                taskInputName.value = "";
             })
 
             let makePublic = document.getElementById(publicID);
@@ -289,6 +298,24 @@ async function get_list() {
                     switch_public(valueList.id, false);
                     makePublic.innerHTML = textLabelMakePublic;
 
+                }
+            });
+
+            // Execute a function when the user releases a key on the keyboard
+            taskInputName.addEventListener("keyup", function (event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    add_task(taskInputName.value, valueList.id);
+                }
+                if (event.keyCode === 27) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    taskForm.style.display = "none";
+                    makeTask.style.display = "block";
                 }
             });
 
@@ -337,6 +364,15 @@ async function get_list() {
                         taskName.style.borderRadius = "5px";
                     })
 
+                    document.addEventListener("click", function(){
+                        if (event.target != taskName) {
+                            taskName.style.background = "none";
+                            taskName.style.color = "#ffffff";
+                        } if (event.target != taskButton && taskButton.checked == true) {
+                            document.getElementById(taskButtonIDinc).checked = false;
+                        }
+                    })
+
 
                     let deleteTask = document.getElementById(deleteTaskIDinc);
                     deleteTask.addEventListener("click", function () {
@@ -370,6 +406,7 @@ async function get_list() {
                 }
             }
 
+            
             idInc++;
 
         }
@@ -729,6 +766,7 @@ function show_form_add_list() {
         form_add_list.style.display = "none";
         form_show_btn_add_list.style.display = "block";
         newList.style.padding = "20px";
+        addlist_name.value = "";
     }
     addlist_name.select();
 }

@@ -108,6 +108,10 @@ body {
     border: none;
     cursor: pointer;
     max-height:15px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */ 
 }
 
 .task-button {
@@ -122,13 +126,17 @@ body {
     border: none;
     cursor: pointer;
     max-height:25px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */ 
 }
 
 /*hide the inputs/checkmarks*/
 .fake-input {
     position:absolute;
-    left:0;
-    top:0;
+    left:-5px;
+    top:-5px;
     margin-top:15px;
     opacity: 0;
     cursor: pointer;
@@ -136,6 +144,12 @@ body {
     height: 20px;
 }
 
+.fake-input[id^="taskButton-"] {
+    position:absolute;
+    left:-10px;
+    top:-10px;
+}
+    
 /*hide the listmenu*/
 ul.listmenu {
     max-height: 0px;
@@ -210,6 +224,20 @@ div.deleteUserForm {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.shared-list-item {
+    position: relative;
+    float:top;
+    text-align:left;
+    color:#ffffff;
+    border-radius: 5px;
+    background:#3f807a;
+    padding:5px;
+    border-Radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 .list-item:hover{
     background-color: #264d49;
 }
@@ -224,6 +252,7 @@ div.deleteUserForm {
     background:#3f807a80;
     padding:5px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .new-list-item:hover{
@@ -335,5 +364,15 @@ div[id^="taskForm-"]{
     .wrapper {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+    .menu ul {
+        display:grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+    .share{
+        float:right;
+    }
+    #logout{
+        float:left;
     }
 }
