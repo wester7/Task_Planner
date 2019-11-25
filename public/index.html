@@ -1,130 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Front Page</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color:#2b2b2b;
-    }
-
-    input{
-      width:100%;
-      background:#2b2b2b;
-      border-radius: 5px;
-      border-style:none;
-      color:#ffffff;
-      padding:5px;
-      margin-top:5px;
-      margin-bottom:10px;    
-    }
-
-    h1{
-      color:white;
-      text-align:center;
-    }
-
-    .login-page{
-      width: 100%;
-      margin-top:50px;
-    }
-
-    .login{
-      width:30%;
-      height:100%;
-      margin:auto;
-      background-color:#436277;
-      color:#ffffff;
-      padding: 20px;
-      padding-bottom:55px;
-      border-radius: 5px;
-      display:block;
-    }
-
-    .register{
-      width:30%;
-      height:100%;
-      margin:auto;
-      background-color:#436277;
-      color:#ffffff;
-      padding: 20px;
-      padding-bottom:55px;
-      border-radius: 5px;
-      display:none;
-    }
-
-    .submit{
-      width:30%;
-      min-width: 60px; 
-      float:left;
-      background:#7e7e7e;
-      border-radius: 5px;
-      border-style:none;
-      color:#ffffff;
-      padding:5px;
-      margin:10px 10px 20px 0px;
-      cursor: pointer;
-    }
-
-      @media only screen and (max-width:620px) {
-      /* For mobile phones: */
-      .login {
-        width:calc(50% - 10px);
-      }
-    }
-  </style>
-
-
+  <link rel="stylesheet" href="static/index.css">
 </head>
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-</script>
-
-
 <body>
-
   <div class="login-page">
 
-    <h1>Welcome</h1>
-  
-    <form class="login">
+    <form id="loginDisplay" class="login">
+      <h1>Login</h1>
       <labal>Username:</labal>
-      <input class="username" type="text" name="username" placeholder="Name..." autocomplete="off" value="" required><br>
+      <input id="username_login" class="username" type="text" name="username" placeholder="Name..." autocomplete="off"
+        value="" required><br>
       <labal>Password:</labal>
-      <input class="password" type="password" name="password" placeholder="Password..." autocomplete="off" value="" required><br>
-      <input class="submit" type="submit" value="Login">
-      <input id="register" class="submit" type="button" value="Register">
-
+      <input id="password_login" class="password" type="password" name="password" placeholder="Password..."
+        autocomplete="off" value="" required><br>
+      <input id="btnLogin" class="submit" value="Login">
+      <input id="register" class="submit" type="button" value="Sign up">
+      <br><br><br>
+      <p id="txtResult_login"></p>
     </form>
 
 
 
-    <form class="register">
+    <form id="registerDisplay" class="register">
+
+      <h1>Sign up</h1>
 
       <labal>Email:</labal>
-      <input class="email" type="email" name="email" placeholder="Email..." autocomplete="off" value="" required><br>
+      <input id="email_register" class="email" type="email" name="email" placeholder="Email..." autocomplete="off"
+        value="" required><br>
 
       <labal>Username:</labal>
-      <input class="username" type="text" name="username" placeholder="name..." autocomplete="off" value="" required><br>
+      <input id="username_register" class="username" type="text" name="username" placeholder="Name..."
+        autocomplete="off" value="" required><br>
 
       <labal>Password:</labal>
-      <input id="password" class="password" type="password" name="password" placeholder="Password..." autocomplete="off" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-      title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+      <input id="password_register" class="password" type="password" name="password" placeholder="Password..."
+        autocomplete="off" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        required><br>
 
       <labal>Confirm password:</labal>
-      <input id="confirm-password" class="confirm-password" type="password" name="confirm-password" placeholder="Password..." autocomplete="off" value="" 
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+      <input id="confirm_password_register" class="confirm-password" type="password" name="confirm-password"
+        placeholder="Password..." autocomplete="off" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        required><br>
 
-      <input class="submit" type="submit" value="Create user">
-      <input id="login" class="submit" type="button" value="Login">
+      <input id="btnCreate" class="submit" value="Create user">
+      <input id="returnBtn" class="submit" type="button" value="Return">
+      <br><br><br>
+      <p id="txtResult_register"> </p>
 
     </form>
 
@@ -132,33 +62,76 @@
 
 </body>
 
+<script src="js/login.js"></script>
 <script>
-$(document).ready(function() {
-  $("#register").click(function() {
-    $(".register").css("display", "block");
-    $(".login").css("display", "none");
+
+
+  let register = document.getElementById("register");
+  let returnBtn = document.getElementById("returnBtn");
+  let registerDisplay = document.getElementById("registerDisplay");
+  let loginDisplay = document.getElementById("loginDisplay");
+  let email_register = document.getElementById('email_register');
+  let username_register = document.getElementById('username_register');
+  let password_register = document.getElementById('password_register');
+  let confirm_password_register = document.getElementById('confirm_password_register');
+  let password_login = document.getElementById("password_login");
+  let btnLogin = document.getElementById("btnLogin");
+  let btnCreate = document.getElementById("btnCreate");
+  let txtResult_register = document.getElementById("txtResult_register");
+  let username_login = document.getElementById("username_login");
+  let txtResult_login = document.getElementById("txtResult_login");
+
+  confirm_password_register.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("btnCreate").click();
+    }
   });
 
-  $("#login").click(function() {
-    $(".register").css("display", "none");
-    $(".login").css("display", "block");
+  register.addEventListener("click", function () {
+    password_login.value = "";
+    username_login.value = "";
+    txtResult_login.innerHTML = "";
+    registerDisplay.style.display = "block";
+    loginDisplay.style.display = "none";
+  });
+  returnBtn.addEventListener("click", function () {
+    email_register.value = "";
+    username_register.value = "";
+    password_register.value = "";
+    confirm_password_register.value = "";
+    txtResult_register.innerHTML = "";
+    registerDisplay.style.display = "none";
+    loginDisplay.style.display = "block";
   });
 
-});
+  password_login.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("btnLogin").click();
+    }
+  });
 
-let password = document.getElementById("password")
-let confirm_password = document.getElementById("confirm-password");
 
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
+  let password = document.getElementById("password")
+  let confirm_password = document.getElementById("confirm-password");
+
+  function validatePassword() {
+    if (password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
   }
-}
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
 </script>
 
 </html>

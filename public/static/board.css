@@ -1,13 +1,28 @@
+html * {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande' !important;
+}
+
 * {
     box-sizing: border-box;
 }
 
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+p {
+    color: #384e6e;
+}
+
 ul {
     list-style-type: none;
-    margin: 0;
+    margin: 20px;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #afadad;
+    border-radius: 5px;
+    z-index: 1;
 }
 
 .active, .share {
@@ -26,39 +41,59 @@ li a:hover {
     background-color: #111;
 }
 
-.logout{
+#confirmDelete:hover {
+    background-color: red;
+}
+
+#cancelDelete:hover {
+    background-color: #111;
+}
+
+.menuFloat{
     float:right;
+    cursor:pointer;
 }
 
 body {
-    background-color:#2b2b2b;
-}
+    background-image: url('bakgrunnsbilde2.jpg');
+    background-color: #fff9f9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 565px;
+
+  }
 
 .menu {
     float:top;
     width:100%;
     text-align:center;
-    background-color:#436277;
     color:#ffffff;
-}
+    grid-column-start:1;
+    grid-column-end:5;
 
-.lists {
-    padding-top:15px;
 }
 
 .list {
-    position:relative;
-    float:left;
-    width:calc(25% - 10px);
-    height:10%;
+    position: relative;
     text-align:left;
-    background-color:#436277;
+    background-color:#97cdbd6b;
     color:#ffffff;
     padding-left: 20px;
-    padding-right:20px;
-    margin:5px;
+    padding-right: 20px;
+    margin:20px;
     border-radius: 5px;
     
+}
+
+.newList {
+    text-align:left;
+    background-color:#68a19c;
+    color:#ffffff;
+    margin:20px;
+    padding: 20px;
+    border-radius: 5px;
+
 }
 
 .list-button {
@@ -73,28 +108,86 @@ body {
     border: none;
     cursor: pointer;
     max-height:15px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */ 
+}
+
+.task-button {
+    background-color:transparent;
+    color: white;
+    position:absolute; 
+    font-size:15px;
+    top: 0;
+    right: 0; 
+    margin-top: 3px;
+    margin-right:15px;
+    border: none;
+    cursor: pointer;
+    max-height:25px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */ 
 }
 
 /*hide the inputs/checkmarks*/
 .fake-input {
     position:absolute;
-    left:0;
-    top:0;
+    left:-5px;
+    top:-5px;
     margin-top:15px;
     opacity: 0;
     cursor: pointer;
-
+    width: 30px;
+    height: 20px;
 }
 
+.fake-input[id^="taskButton-"] {
+    position:absolute;
+    left:-10px;
+    top:-10px;
+}
+    
 /*hide the listmenu*/
 ul.listmenu {
     max-height: 0px;
+    width: 120px;
     overflow: hidden;
     position:absolute;
     right:0;
     top:0;
     margin-top: 30px;
     font-size: 15px;
+    background-color: #7c7c7c
+}
+
+ul[id^="taskMenu-"] {
+    max-height: 0px;
+    width: 120px;
+    overflow: hidden;
+    position:absolute;
+    right:0;
+    top:0;
+    margin-top: 30px;
+    font-size: 15px;
+    background-color: #7c7c7c
+}
+
+/*hide the deleteUserForm*/
+div.deleteUserForm {
+    max-height: 0px;
+    width: 300px;
+    overflow: hidden;
+    position:absolute;
+    right:108px;
+    top:37px;
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: #636363;
+    text-align:center;
+    border-radius: 5px;
 }
 
 /*show the listmenu when checked*/
@@ -102,18 +195,51 @@ ul.listmenu {
     max-height: 300px;
 }
 
+/*show the listmenu when checked*/
+.fake-input:checked~[id^="taskMenu-"] {
+    max-height: 300px;
+}
+
 .list-title {
     font-size:20px;
+    margin-top: 30px;
+    color: #384e6e;
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: "5px";
+    width: 90%;
 }
 
 .list-item {
+    position: relative;
     float:top;
     text-align:left;
     color:#ffffff;
     border-radius: 5px;
-    background:#214761;
+    background:#3f807a;
     padding:5px;
     cursor: pointer;
+    border-Radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.shared-list-item {
+    position: relative;
+    float:top;
+    text-align:left;
+    color:#ffffff;
+    border-radius: 5px;
+    background:#3f807a;
+    padding:5px;
+    border-Radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.list-item:hover{
+    background-color: #264d49;
 }
 
 .new-list-item{
@@ -123,28 +249,57 @@ ul.listmenu {
     color:#ffffff;
     border-radius: 5px;
     border-style:none;
-    background:#2b2b2b;
+    background:#3f807a80;
     padding:5px;
-    margin-bottom:20px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
-.new-task-input{
-    width:100%;
+.new-list-item:hover{
+    background:#2a534f80;
+}
+
+.new-list{
     float:top;
-    background:#2b2b2b;
+    width: 100%;
+    height: 50px;
+    text-align:left;
+    color:#ffffff;
     border-radius: 5px;
     border-style:none;
-    color:#ffffff;
+    background:#68a19c;
+    cursor: pointer;
+    font-size:20px;
+    text-align: center;
+}
+
+input[id^="taskInput-"]{
+    width:100%;
+    float:top;
+    background:white;
+    border-radius: 5px;
+    border-style:none;
+    color:#747474;
     padding:5px;
-
 }
 
-.delete{
-    background-color:#a10000;
+.input-result {
+    background: none;
+    border:none;
+    color: white;
+    cursor:pointer;
+    width:90%;
 }
-.delete:hover{
-    background-color:#720000;
+
+.new-list-input{
+    width:100%;
+    float:top;
+    background:#ffffff;
+    border-radius: 5px;
+    border-style:none;
+    color:#747474;
+    padding:5px;
+    font-size: 20px;
 }
 
 .submit{
@@ -157,22 +312,67 @@ ul.listmenu {
     padding:5px;
     margin:10px 10px 20px 0px;
     cursor: pointer;
-
+    text-align: center;
 }
 
-#form1{
+.confirm{
+    width:30%;
+    background:#7e7e7e;
+    border-radius: 5px;
+    border-style:none;
+    color:#ffffff;
+    padding:5px;
+    margin:10px 10px 20px 0px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Targets all divs with a starting ID of "taskForm-". Aka. Create new task forms.*/
+div[id^="taskForm-"]{
     display: none;
+    margin-top: 0px;
+    margin-bottom: 50px;
 }
 
 #formButton {
     display: block;
     margin-right: auto;
     margin-left: auto;
+    background-color: #afadad;
+}
+
+#form_add_list{
+    display: none;
+}
+
+#form_show_btn_add_list {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media only screen and (max-width:1000px) {
+    /* For mobile phones: */
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
 }
 
 @media only screen and (max-width:620px) {
     /* For mobile phones: */
-    .list {
-    width:calc(50% - 10px);
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .menu ul {
+        display:grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+    .share{
+        float:right;
+    }
+    #logout{
+        float:left;
     }
 }

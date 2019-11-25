@@ -1,90 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-  <title>Front Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
   <link rel="stylesheet" href="static/board.css">
-  
+
 </head>
+
 </script>
+
 <body>
+  <div class="menu">
+    <ul>
+      <li><a class="active" href="board.html">Home</a></li>
+      <li><a class="share" href="shared_lists.html">Shared Lists</a></li>
+      <li><a id="logout" class="menuFloat">Logout</a></li>
+      <li><a id="deleteUser" class="menuFloat">Delete User</a></li>
+    </ul>
+  </div>
 
-<div class="page">
+  <div id="deleteUserForm" style="max-height: 0px;" class="deleteUserForm">
+    <p id="check" style="color:white">Are you sure?</p>
+    <input id="confirmDelete" class="confirm" type="button" value="Delete">
+    <input id="cancelDelete" class="confirm" type="button" value="Cancel">
+  </div></label>
 
-<div class="menu">
-  <ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a class="share" href="#share">Share</a></li>
-    <li><a class="logout" href="#logout">Logout</a></li>
-  </ul>
-</div>
-
-<div class="lists">
-
-  <div class="list">
-    <p class="list-title">To do</p>
-
-    
-    <label class="list-button" for="list-button">...<input class="fake-input" id="list-button" type="checkbox" name="list-button" /><ul class="listmenu">
-        <li><a class="delete" href="#">Delete</a></li>
-      </ul></label>
-
-    <button id="formButton" class="new-list-item">+ Add task</button>
-    <form id="form1">
-      <input class="new-task-input" type="text" name="FirstName" placeholder="Write name..." autocomplete="off" value=""><br>
-      <input class="submit" type="submit" value="Add">
-      <input class="submit" id="cancelButton" type="submit" value="Cancle">
-      </form> 
+  <!-- Add New List -->
+  <div id="newList" class="newList">
+    <!-- Add list -->
+    <button id="form_show_btn_add_list" class="new-list">+ Add List</button>
+    <div id="form_add_list">
+      <h2 id="txtResult_add_list"></h2>
+      <input id="name_add_list" class="new-list-input" type="text" name="FirstName" placeholder="Write name..."
+        autocomplete="off" value=""><br>
+      <input id="form_add_btn_add_list" class="submit" type="button" value="Add">
+      <input id="form_close_btn_add_list" class="submit" type="button" value="Close">
     </div>
-
-  <div class="list">
-    <p class="list-title">In progress</p> 
-    <p class="list-item">In progress test</p>
   </div>
+  <div id="lists" class="wrapper"></div>
 
-  <div class="list">
-    <p class="list-title">Done</p>
-    <p class="list-item">done test</p>
-  </div>
-
-  <div class="list" style="background:#7e7e7e">
-    <p class="list-title">+ Add list</p>
-    
-  </div>
-
-
-
-</div>
-
-</div>
 </body>
 
-<script>
-listButton = document.getElementById("list-button");
-formButton = document.getElementById("formButton");
-form1 = document.getElementById("form1");
-cancelButton = document.getElementById("cancelButton");
-
-  document.addEventListener("click", function(){
-    if (event.target != listButton && listButton.checked == true){
-      document.getElementById("list-button").checked = false;
-    }
-  });
-
-  document.addEventListener("DOMContentLoaded", function(){
-    document.addEventListener("click", function(){
-      if(event.target == formButton){
-        form1.style.display = "block";
-        formButton.style.display = "none";
-      }
-      if (event.target == cancelButton){
-        form1.style.display = "none";
-        formButton.style.display = "block";
-      }
-    });
-  });
-
-</script>
+<script src="js/logout.js"></script>
+<script src="js/board.js"></script>
 
 </html>
