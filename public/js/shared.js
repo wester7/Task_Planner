@@ -1,24 +1,15 @@
-//---------------------------------------------------------------------------- Global Variables
-//Base url 
+
 let url = "http://localhost:3000";
-
-//div lists
 let div_list;
-
-//form - add list
 let form_show_btn_add_list;
 let form_add_list;
 let name_add_list = document.getElementById('name_add_list');
-
-//add list values
 let addlist_name;
 let addlist_txtResult;
 
-//new task form
 let taskForm;
 let cancelButton;
 
-// Delete User Form
 let deleteUserForm = document.getElementById("deleteUserForm");
 let deleteUser = document.getElementById("deleteUser");
 let confirmDelete = document.getElementById("confirmDelete");
@@ -26,12 +17,9 @@ let cancelDelete = document.getElementById("cancelDelete");
 
 window.addEventListener("load", setupSharedList);
 
-//---------------------------------------------------------------------------- Functions
 function setupSharedList() {
-    //---------------------------------------------------------------------------- Variables
     div_list = document.getElementById("lists");
 
-    //Add List Form 
     form_show_btn_add_list = document.getElementById("form_show_btn_add_list");
     form_add_list = document.getElementById("form_add_list");
     form_add_btn_add_list = document.getElementById("form_add_btn_add_list");
@@ -44,15 +32,12 @@ function setupSharedList() {
 }
 
 async function get_sharedlist() {
-
-    //Clear the field for all list 
+ 
     div_list.innerHTML = "";
 
-    //get the login data
     let logindata = JSON.parse(sessionStorage.getItem("user"));
     let token = logindata.token;
 
-    //Get list url 
     let urlList = url + "/list/shared";
     let urlTask = url + "/list/task";
 
@@ -70,8 +55,6 @@ async function get_sharedlist() {
         if (resp.status > 202) {
             throw data;
         }
-        //console.log("Getting lists");
-        //div_list.innerHTML = "";
 
         let idInc = 1
         for (let value of data) {
@@ -80,7 +63,6 @@ async function get_sharedlist() {
 
             let idTaskInc = 1;
 
-            //Tasks names setup: [nameOnTheThing]-[List ID]-[TASK INCREMENTED NUMBER]
             let taskButtonID = "taskButton-" + value.id + "-";
             let newTaskID = "newTask-" + value.id + "-";
             let taskMenuID = "taskMenu-" + value.id + "-";
@@ -96,12 +78,11 @@ async function get_sharedlist() {
 
             let htmlTask = "";
         
-            console.log(value.id);
+            
 
             try {
 
                 let listExt = "?listid=" + value.id;
-                console.log(urlTask + listExt);
                 let respTask = await fetch(urlTask + listExt, cfg);
                 let dataTask = await respTask.json();
 
