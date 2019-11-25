@@ -2,16 +2,20 @@
 const express = require('express');
 const port = process.env.PORT || 3000;  
 const app = express(); 
-
 const secret = "hamburgerstastegood!";
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cors = require('cors'); 
-
 const pg = require('pg');
-const dbURI = "postgres://fwyazbdyciujfb:a28b1df9d7ec85018523b4bf04b5266cbd08d4223f77bc0190422e779080b50e@ec2-54-246-84-100.eu-west-1.compute.amazonaws.com:5432/datocsnhk03b1u" + "?ssl=true";
 
-const connstring = process.env.DATABASE_URL || dbURI;
+let classified;
+try {
+   classified = require("./classified")
+} catch (err) {
+   console.error("Local is not running")
+}
+
+const connstring = process.env.DATABASE_URL || classified.env.DATABASE_URL;
 const pool = new pg.Pool({ connectionString: connstring });
 
 let logindata;
