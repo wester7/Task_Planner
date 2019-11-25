@@ -54,6 +54,7 @@ async function get_sharedlist() {
 
     //Get list url 
     let urlList = url + "/list/shared";
+    let urlTask = url + "/list/task";
 
     let cfg = {
         method: "GET",
@@ -76,26 +77,64 @@ async function get_sharedlist() {
         for (let value of data) {
 
             let editID = "editName-" + idInc;
-            let newTaskID = "newTask-" + idInc;
-            let taskNameID = "taskName" + idInc;
+
+            let idTaskInc = 1;
+
+            //Tasks names setup: [nameOnTheThing]-[List ID]-[TASK INCREMENTED NUMBER]
+            let taskButtonID = "taskButton-" + value.id + "-";
+            let newTaskID = "newTask-" + value.id + "-";
+            let taskMenuID = "taskMenu-" + value.id + "-";
+            let taskNameID = "taskName-" + value.id + "-";
+            let deleteTaskID = "deleteTask-" + value.id + "-";
 
             let html = `
                 <input id="${editID}"class="list-title" value="${value.name}" disabled></input>
-
-                <div id="${newTaskID}" class="shared-list-item">
-
-                <input id="${taskNameID}" class="input-result" value="A New Task Test" style="cursor:default" disabled></input>
-
-                </div>
-                
-
-
             `;
+
+
+
+
+            let htmlTask = "";
+        
+            console.log(value.id);
+
+            try {
+
+                let listExt = "?listid=" + value.id;
+                console.log(urlTask + listExt);
+                let respTask = await fetch(urlTask + listExt, cfg);
+                let dataTask = await respTask.json();
+
+                if (respTask.status > 202) {
+                    throw dataTask;
+                }
+
+                for (let valueTask of dataTask) {
+                    
+                    let taskButtonIDinc = taskButtonID+idTaskInc;
+                    let newTaskIDinc = newTaskID + idTaskInc;
+                    let taskMenuIDinc = taskMenuID + idTaskInc;
+                    let taskNameIDinc = taskNameID + idTaskInc;
+                    let deleteTaskIDinc = deleteTaskID + idTaskInc;
+
+                    htmlTask += `<div id="${newTaskIDinc}" class="list-item">
+
+                    <input id="${taskNameIDinc}" class="input-result" value="${valueTask.name}" disabled> </input>
+
+                    </div>`;
+
+                    idTaskInc++;
+
+                }
+
+            } catch (error) {
+                console.log("Error with task");
+            }
 
             let div = document.createElement("div");
             div.id = value.id;
             div.className = "list";
-            div.innerHTML = html;
+            div.innerHTML = html + htmlTask;
 
             div_list.appendChild(div);
 

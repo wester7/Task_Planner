@@ -89,7 +89,8 @@ app.post('/list', async function (req, res) {
 
    let sql = 'INSERT INTO list (id, name, userid, public) values(DEFAULT, $1, $2, $3) RETURNING *';
 
-   let values = [updata.name, updata.userid, true];
+   let publicStartValue = false;
+   let values = [updata.name, updata.userid, publicStartValue];
 
    try {
       console.log(values);
