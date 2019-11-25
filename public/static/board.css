@@ -20,7 +20,7 @@ ul {
     margin: 20px;
     padding: 0;
     overflow: hidden;
-    background-color: #afadad;
+    background-color: #5b7681;
     border-radius: 5px;
     z-index: 1;
 }
@@ -55,7 +55,7 @@ li a:hover {
 }
 
 body {
-    background-image: url('bakgrunnsbilde2.jpg');
+    background-image: url('bakgrunnsbilde1.jpg');
     background-color: #fff9f9;
     background-size: cover;
     background-position: center;
@@ -77,18 +77,19 @@ body {
 .list {
     position: relative;
     text-align:left;
-    background-color:#97cdbd6b;
+    background-color:white;
     color:#ffffff;
     padding-left: 20px;
     padding-right: 20px;
     margin:20px;
+    border: 1px solid grey;
     border-radius: 5px;
     
 }
 
 .newList {
     text-align:left;
-    background-color:#68a19c;
+    background-color:#7995a0;
     color:#ffffff;
     margin:20px;
     padding: 20px;
@@ -98,7 +99,7 @@ body {
 
 .list-button {
     background-color:transparent;
-    color: white;
+    color: black;
     position:absolute; 
     font-size:25px;
     top: 0; 
@@ -116,7 +117,7 @@ body {
 
 .task-button {
     background-color:transparent;
-    color: white;
+    color: black;
     position:absolute; 
     font-size:15px;
     top: 0;
@@ -142,6 +143,7 @@ body {
     cursor: pointer;
     width: 30px;
     height: 20px;
+    background-color: black;
 }
 
 .fake-input[id^="taskButton-"] {
@@ -203,12 +205,13 @@ div.deleteUserForm {
 .list-title {
     font-size:20px;
     margin-top: 30px;
-    color: #384e6e;
+    color: black;
     background: none;
     border: none;
     margin-bottom: 10px;
-    border-radius: "5px";
+    border-radius: 5px;
     width: 90%;
+    padding: 10px 0px 10px 0px;
 }
 
 .list-item {
@@ -216,11 +219,10 @@ div.deleteUserForm {
     float:top;
     text-align:left;
     color:#ffffff;
-    border-radius: 5px;
-    background:#3f807a;
+    border-bottom: 1px solid grey;
+    background:white;
     padding:5px;
     cursor: pointer;
-    border-Radius: 5px;
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -239,24 +241,26 @@ div.deleteUserForm {
 }
 
 .list-item:hover{
-    background-color: #264d49;
+    background-color: #e0e0e0;
 }
 
 .new-list-item{
     float:top;
     width: 100%;
     text-align:left;
-    color:#ffffff;
-    border-radius: 5px;
+    color: black;
+    font-size: 15px;
+    border-radius: 0px;
     border-style:none;
-    background:#3f807a80;
-    padding:5px;
+    border-bottom: 1px solid black;
+    background: white;
+    padding: 15px 0px 15px 0px;
     cursor: pointer;
     margin-bottom: 20px;
 }
 
 .new-list-item:hover{
-    background:#2a534f80;
+    background:#e0e0e0;
 }
 
 .new-list{
@@ -267,7 +271,7 @@ div.deleteUserForm {
     color:#ffffff;
     border-radius: 5px;
     border-style:none;
-    background:#68a19c;
+    background:#7995a0;
     cursor: pointer;
     font-size:20px;
     text-align: center;
@@ -281,13 +285,15 @@ input[id^="taskInput-"]{
     border-style:none;
     color:#747474;
     padding:5px;
+    font-size: 15px;
+    border: 1px solid grey;
 }
 
 .input-result {
     background: none;
-    background-color: none;
+    background-color: white;
     border:none;
-    color: white;
+    color: black;
     cursor:pointer;
     width:90%;
 }

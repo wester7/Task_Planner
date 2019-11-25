@@ -10,7 +10,7 @@
       }
   
       body {
-        background-image: url('bakgrunnsbilde.jpg');
+        background-image: url('bakgrunnsbilde0.jpg');
         background-color: #fef3f1;
         background-size: cover;
         background-position: center;
@@ -31,11 +31,15 @@
       }
   
       h1{
-        color:rgb(255, 255, 255);
+        color:black;
         margin-top: 50px;
         margin-bottom: 50px;
         text-align: center;
         font-size: 40px;
+      }
+
+      p {
+        color: black;
       }
   
       .login-page{
@@ -47,24 +51,52 @@
         height:580px;
         margin:auto;
         margin-top: 50px;
-        background-color:#2eaf9152;
+        background-color:white;
         color:#ffffff;
         padding: 80px 40px;
         border-radius: 10px;
         display:block;
         
       }
+
+      .username {
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 0px;
+        padding: 10px 0px 10px 0px;
+      }
+
+      .password {
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 0px;
+        padding: 10px 0px 10px 0px;
+      }
   
       .register{
         width:360px;
-        height:580px;
+        height:680px;
         margin:auto;
         margin-top: 50px;
-        background-color:#2eaf9152;
+        background-color:white;
         color:#ffffff;
         padding: 80px 40px;
         border-radius: 10px;
         display:none;
+      }
+
+      .email {
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 0px;
+        padding: 10px 0px 10px 0px;
+      }
+
+      .confirm-password {
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 0px;
+        padding: 10px 0px 10px 0px;
       }
   
       .submit{

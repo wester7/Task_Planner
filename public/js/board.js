@@ -250,7 +250,7 @@ async function get_list() {
 
             editName.addEventListener("click", function () {
                 console.log(editName);
-                editName.style.color = "#747474";
+                editName.style.color = "fff9f9";
                 editName.style.background = "#ffffff";
             })
 
@@ -326,7 +326,7 @@ async function get_list() {
                     // Cancel the default action, if needed
                     event.preventDefault();
                     // Trigger the button element with a click
-                    editName.style.color = "#384e6e";
+                    editName.style.color = "fff9f9";
                     editName.style.background = "none";
                     editName.blur();
 
@@ -336,7 +336,7 @@ async function get_list() {
                     // Cancel the default action, if needed
                     event.preventDefault();
                     // Trigger the button element with a click
-                    editName.style.color = "#384e6e";
+                    editName.style.color = "fff9f9";
                     editName.style.background = "none";
                     editName.blur();
                 }
@@ -359,15 +359,15 @@ async function get_list() {
                     let taskName = document.getElementById(taskNameIDinc)
                     taskName.addEventListener("click", function () {
                         console.log("Editing Tasks Name");
-                        taskName.style.color = "#747474";
+                        taskName.style.color = "black";
                         taskName.style.background = "#ffffff";
                         taskName.style.borderRadius = "5px";
                     })
 
                     document.addEventListener("click", function(){
                         if (event.target != taskName) {
-                            taskName.style.background = "none";
-                            taskName.style.color = "#ffffff";
+                            taskName.style.background = "white";
+                            taskName.style.color = "black";
                         } if (event.target != taskButton && taskButton.checked == true) {
                             document.getElementById(taskButtonIDinc).checked = false;
                         }
@@ -388,8 +388,8 @@ async function get_list() {
                             // Cancel the default action, if needed
                             event.preventDefault();
                             // Trigger the button element with a click
-                            taskName.style.color = "white";
-                            taskName.style.background = "#3f807a";
+                            taskName.style.color = "black";
+                            taskName.style.background = "white";
                             taskName.blur();
 
                             change_name_task(taskIdArray[i-1],taskName.value);
@@ -398,8 +398,8 @@ async function get_list() {
                             // Cancel the default action, if needed
                             event.preventDefault();
                             // Trigger the button element with a click
-                            taskName.style.color = "white";
-                            taskName.style.background = "#3f807a";
+                            taskName.style.color = "black";
+                            taskName.style.background = "white";
                             taskName.blur();
                         }
                     });
