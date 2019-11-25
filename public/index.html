@@ -82,11 +82,9 @@
   let txtResult_login = document.getElementById("txtResult_login");
 
   confirm_password_register.addEventListener("keyup", function (event) {
-    // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
-      // Cancel the default action, if needed
+    
+    if (event.keyCode === 13) {  
       event.preventDefault();
-      // Trigger the button element with a click
       document.getElementById("btnCreate").click();
     }
   });
@@ -109,11 +107,8 @@
   });
 
   password_login.addEventListener("keyup", function (event) {
-    // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
-      // Cancel the default action, if needed
       event.preventDefault();
-      // Trigger the button element with a click
       document.getElementById("btnLogin").click();
     }
   });

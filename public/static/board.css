@@ -108,10 +108,10 @@ body {
     border: none;
     cursor: pointer;
     max-height:15px;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */ 
+    -webkit-user-select: none; 
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  user-select: none;          
 }
 
 .task-button {
@@ -126,13 +126,13 @@ body {
     border: none;
     cursor: pointer;
     max-height:25px;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */ 
+    -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;     
+  user-select: none;         
 }
 
-/*hide the inputs/checkmarks*/
+
 .fake-input {
     position:absolute;
     left:-5px;
@@ -150,7 +150,7 @@ body {
     top:-10px;
 }
     
-/*hide the listmenu*/
+
 ul.listmenu {
     max-height: 0px;
     width: 120px;
@@ -175,7 +175,7 @@ ul[id^="taskMenu-"] {
     background-color: #7c7c7c
 }
 
-/*hide the deleteUserForm*/
+
 div.deleteUserForm {
     max-height: 0px;
     width: 300px;
@@ -190,12 +190,12 @@ div.deleteUserForm {
     border-radius: 5px;
 }
 
-/*show the listmenu when checked*/
+
 .fake-input:checked~.listmenu {
     max-height: 300px;
 }
 
-/*show the listmenu when checked*/
+
 .fake-input:checked~[id^="taskMenu-"] {
     max-height: 300px;
 }
@@ -328,7 +328,7 @@ input[id^="taskInput-"]{
     text-align: center;
 }
 
-/* Targets all divs with a starting ID of "taskForm-". Aka. Create new task forms.*/
+
 div[id^="taskForm-"]{
     display: none;
     margin-top: 0px;
@@ -353,7 +353,6 @@ div[id^="taskForm-"]{
 }
 
 @media only screen and (max-width:1000px) {
-    /* For mobile phones: */
     .wrapper {
         display: grid;
         grid-template-columns: repeat(2, 2fr);
@@ -361,7 +360,6 @@ div[id^="taskForm-"]{
 }
 
 @media only screen and (max-width:620px) {
-    /* For mobile phones: */
     .wrapper {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
